@@ -16,7 +16,16 @@
             </div>
             
         </header>
-
+        {% if user.is_authenticated %}
+            <p>Hi {{ user.username }}! 
+            Not your account? <a href="{% url 'logout' %}">Log Out</a>
+            </p>
+        {% else %}
+            <p>You are not logged in. 
+            <a href="{% url 'login' %}">Log In</a>
+            </p>
+        {% endif %}
+        <br><br>
         <div>
             {% block content %}
             {% endblock content %}
